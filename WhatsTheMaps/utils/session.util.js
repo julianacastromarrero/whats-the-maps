@@ -4,6 +4,7 @@ function buildSessionUser(user, storedProfile = {}) {
     id: user.id,
     username: user.username,
     email: user.email,
+    role: user.role,
     bio: storedProfile.bio || '',
     profileImageUrl: storedProfile.profileImageUrl || null
   };

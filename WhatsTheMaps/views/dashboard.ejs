@@ -10,7 +10,7 @@
   <%- include('./partials/banner.ejs') %>
 
   <%- include('./partials/nav.ejs') %>
-
+  <% if (user.role === 'player') { %>
   <main class="page-shell page-shell--centered">
     <section class="page-stack page-stack--wide">
       <%# Flash messages confirm profile updates or explain failures %>
@@ -185,6 +185,30 @@
       <% } %>
     </section>
   </main>
+  <% } else if (user.role === 'admin') { %>
+    <%# Admin role see a simple message and logout option %>
+    <main class="page-shell page-shell--centered">
+      <section class="page-card page-card--compact">
+        <h1 class="page-title">Admin Dashboard</h1>
+        <p>Welcome, Admin! Here you will find options to manage the application.</p>
+        <a class="button-link" href="/users/logout">
+          <span class="button">Log Out</span>
+        </a>
+        <br>
+        <a class="button-link" onclick="location.href='/admin/userManagement'"></a>
+          <span class="button" style="font-size: 25px; background-color: #d87c71;">User Management</span>
+        </a>
+        <br>
+        <a class="button-link" onclick="location.href='/admin/questionManagement'" >
+          <span class="button" style="font-size: 25px; background-color: #d87c71;">Question Management</span>
+        </a>
+        <br>
+        <a class="button-link" onclick="location.href='/admin/cityManagement'">
+          <span class="button" style="font-size: 25px; background-color: #d87c71;">City Management</span>
+        </a>
+      </section>
+    </main>
+  <% } %>
 
   <% if (isEditing) { %>
     <%# Avatar upload previews only run on editable dashboard %>
