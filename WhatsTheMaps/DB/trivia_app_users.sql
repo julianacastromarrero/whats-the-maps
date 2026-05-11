@@ -37,10 +37,11 @@ CREATE TABLE `users` (
   `is_deleted` tinyint(1) DEFAULT '0',
   `bio` text,
   `profile_image_url` longtext,
+  `role` ENUM('admin','player') NOT NULL DEFAULT 'player',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,8 +50,10 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'emmatest','test3-19@test.com','$2b$10$jR3R5Ie/E5htZiY37rvXMuHPJtWkJ0L.MPHwYehm2Rvk0ZbJqK3j2','2026-03-19 21:57:11',1,NULL,NULL),(2,'tester','test@test.com','$2b$10$vllbBwjaXt3Eu.pMe87qrePajtF.B6HvBb1XGx9Ekoz/dWTdljsU.','2026-04-06 22:56:34',1,'It\'s me, Dr. Horn.','/images/avatars/Dr_Horn2.jpeg'),(3,'tester2','test2@test.com','$2b$10$8jOG019RBze5Tga8jz9j1.YoX8JoEmlwQFEF7P/kfNaw799slErGy','2026-04-08 22:04:58',0,NULL,NULL);
+INSERT INTO `users` VALUES (1,'emmatest','test3-19@test.com','$2b$10$jR3R5Ie/E5htZiY37rvXMuHPJtWkJ0L.MPHwYehm2Rvk0ZbJqK3j2','2026-03-19 21:57:11',1,NULL,NULL,'player'),(2,'tester','test@test.com','$2b$10$vllbBwjaXt3Eu.pMe87qrePajtF.B6HvBb1XGx9Ekoz/dWTdljsU.','2026-04-06 22:56:34',1,'It\'s me, Dr. Horn.','/images/avatars/Dr_Horn2.jpeg','player'),(3,'tester2','test2@test.com','$2b$10$8jOG019RBze5Tga8jz9j1.YoX8JoEmlwQFEF7P/kfNaw799slErGy','2026-04-08 22:04:58',0,NULL,NULL,'player'),
+(4,'admintest','admintest@test.com','$2b$10$QLcFyKz9gngB99cnbcQuOud80vLCBzzzXb.LcpoNiswlEzpzBLw9y','2026-05-10 23:42:11',0,NULL,NULL,'admin');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
 UNLOCK TABLES;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
