@@ -58,7 +58,7 @@ async function deleteQuestion(req, res) {
   try {
     const factTypeId = req.params.id;
     await runQuery('DELETE FROM fact_types WHERE id = ?', [factTypeId]);
-    return res.redirect('admin/questionManagement')
+    return res.redirect('admin/questionManagement');
   }
   catch (error) {
     console.error(error);
@@ -93,7 +93,7 @@ async function addCity(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500).send('Error adding city.');
-    }
+  }
 }
 
 module.exports = { getUserManagement, getQuestionManagement, getCityManagement };
