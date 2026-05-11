@@ -4,10 +4,10 @@ const { buildSessionUser } = require('../utils/session.util');
 const { buildLoginViewModel } = require('../viewModels/authViewModels');
 
 async function signup(req, res) {
-  const { username, email, password } = req.body;
+  const { username, email, password, verifPassword } = req.body;
 
   try {
-    await userService.signup(username, email, password);
+    await userService.signup(username, email, password, verifPassword);
     return res.redirect('/login');
   } catch (error) {
     console.error(error);

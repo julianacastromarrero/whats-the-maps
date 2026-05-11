@@ -56,3 +56,6 @@
 - Changed footer to nav (more accurate)
 - Added direct sign up button in home page
 - Added 5 Florida cities and 5 California cities
+
+5/11 - Natalie
+- implemented a feature where a user must enter a password twice to sign up

@@ -14,11 +14,13 @@ test('signup redirects to login after creating an account', async () => {
     body: {
       username: 'player1',
       email: 'player@example.com',
-      password: 'secret'
+      password: 'secret',
+      verifPassword: 'secret'
     }
   };
   const res = {
     redirect: sinon.spy(),
+    render: sinon.spy(),
     json: sinon.spy(),
     status: sinon.stub().returnsThis()
   };
@@ -28,7 +30,7 @@ test('signup redirects to login after creating an account', async () => {
   await userController.signup(req, res);
 
   assert.equal(
-    userService.signup.calledOnceWithExactly('player1', 'player@example.com', 'secret'),
+    userService.signup.calledOnceWithExactly('player1', 'player@example.com', 'secret', 'secret'),
     true
   );
   assert.equal(res.redirect.calledOnceWithExactly('/login'), true);

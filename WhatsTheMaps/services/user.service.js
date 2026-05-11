@@ -14,7 +14,15 @@ async function comparePassword(plainPassword, hashedPassword) {
   return await bcrypt.compare(plainPassword, hashedPassword);
 }
 
-async function signup(username, email, password) {
+async function signup(username, email, password, verifPassword) {
+  if (!password || !verifPassword) {
+    throw new Error('Both password fields are required');
+  }
+
+  if (password !== verifPassword) {
+    throw new Error('Passwords must match');
+  }
+
   const hashedPassword = await hashPassword(password);
 
   return userRepository.createUser(username, email, hashedPassword);

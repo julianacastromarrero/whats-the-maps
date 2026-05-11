@@ -14,7 +14,7 @@ test('signup hashes the password before creating the user', async () => {
   sinon.stub(bcrypt, 'hash').resolves('hashed-password');
   sinon.stub(userRepository, 'createUser').resolves(42);
 
-  const result = await userService.signup('player1', 'player@example.com', 'secret');
+  const result = await userService.signup('player1', 'player@example.com', 'secret', 'secret');
 
   assert.equal(bcrypt.hash.calledOnceWithExactly('secret', 10), true);
   assert.equal(
@@ -22,6 +22,13 @@ test('signup hashes the password before creating the user', async () => {
     true
   );
   assert.equal(result, 42);
+});
+
+test('signup rejects when the password fields do not match', async () => {
+  await assert.rejects(
+    () => userService.signup('player1', 'player@example.com', 'secret', 'wrong'),
+    /Passwords must match/
+  );
 });
 
 test('login returns the user and stored profile when email/password are valid', async () => {
