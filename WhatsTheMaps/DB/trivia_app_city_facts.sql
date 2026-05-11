@@ -38,8 +38,8 @@ CREATE TABLE `city_facts` (
   PRIMARY KEY (`id`),
   KEY `city_id` (`city_id`),
   KEY `fact_type_id` (`fact_type_id`),
-  CONSTRAINT `city_facts_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`),
-  CONSTRAINT `city_facts_ibfk_2` FOREIGN KEY (`fact_type_id`) REFERENCES `fact_types` (`id`)
+  CONSTRAINT `city_facts_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `city_facts_ibfk_2` FOREIGN KEY (`fact_type_id`) REFERENCES `fact_types` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

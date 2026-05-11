@@ -13,26 +13,26 @@
   <main class="page-shell page-shell--centered">
     <section class="page-card">
       <section class="page-card table-card">
-        <h1 class="page-title">Questions</h1>
+        <h1 class="page-title">Question Types</h1>
           <table class="data-table">
             <thead>
               <tr>
-                <th>Question ID</th>
-                <th>Question Text</th>
-                <th>City</th>
-                <th>Actions</th>
+                <th>Question Type ID</th>
+                <th>Question Type</th>
+                <th>Unit</th>
+                <th>Data Type</th>
               </tr>
             </thead>
             <tbody>
               <% questions.forEach((entry) => { %>
                 <tr>
                   <td><%= entry.id %></td>
-                  <td><%= entry.question_text %></td>
-                  <td><%= entry.city_name %></td>
+                  <td><%= entry.name %></td>
+                  <td><%= entry.unit %></td>
+                  <td><%= entry.data_type %></td>
                     <td>
                         <form action="/admin/questionManagement/delete/<%= entry.id %>" method="POST" style="display:inline;">
                             <button class="button button-danger" type="submit">Delete</button>
-                            <button class="button button-secondary" type="submit" formaction="/admin/questionManagement/edit/<%= entry.id %>">Edit</button>
                         </form>
                     </td>
                 </tr>
