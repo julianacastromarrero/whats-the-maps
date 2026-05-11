@@ -46,11 +46,23 @@ async function undeleteUser(req, res) {
 
 async function getQuestionManagement(req, res) {
   try {
-    const questions = await runQuery('SELECT q.id, q.question_text, c.name AS city_name FROM questions q JOIN cities c ON q.city_id = c.id');
+    const questions = await runQuery('SELECT * from fact_types ORDER BY id;');
     return res.render('admin/questionManagement', { questions });
   } catch (error) {
     console.error(error);
     return res.status(500).send('Error loading question management.');
+  }
+}
+
+async function deleteQuestion(req, res) {
+  try {
+    const factTypeId = req.params.id;
+    await runQuery('DELETE FROM fact_types WHERE id = ?', [factTypeId]);
+    return res.redirect('admin/questionManagement')
+  }
+  catch (error) {
+    console.error(error);
+    return res.status(500).send('Error deleting question.');
   }
 }
 
