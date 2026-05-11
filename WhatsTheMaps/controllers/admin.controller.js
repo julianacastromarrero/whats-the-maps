@@ -68,12 +68,32 @@ async function deleteQuestion(req, res) {
 
 async function getCityManagement(req, res) {
   try {
-    const cities = await runQuery('SELECT id, name FROM cities ORDER BY name');
+    const cities = await runQuery('SELECT id, name, state FROM cities ORDER BY name');
     return res.render('admin/cityManagement', { cities });
   } catch (error) {
     console.error(error);
     return res.status(500).send('Error loading city management.');
   }
+}
+async function deleteCity(req, res) {
+  const cityId = req.params.cityId;
+    try {
+        await runQuery('DELETE FROM cities WHERE id = ?', [cityId]);
+        res.redirect('/admin/cityManagement');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error deleting city.');
+    }
+}
+async function addCity(req, res) {
+  const { name, state } = req.body;
+    try {
+        await runQuery('INSERT INTO cities (name, state) VALUES (?, ?)', [name, state]);
+        res.redirect('/admin/cityManagement');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error adding city.');
+    }
 }
 
 module.exports = { getUserManagement, getQuestionManagement, getCityManagement };

@@ -11,9 +11,49 @@
   <%- include('../partials/adminNav.ejs') %>
 
   <main class="page-shell page-shell--centered">
-    <section class="page-card">
-      <h1 class="page-title">City Management</h1>
-      <p>City management functionality coming soon.</p>
+    <div class="section-stack">
+      <%# First table with user players %>
+      <section class="page-card table-card">
+        <h1 class="page-title">Users</h1>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>City ID</th>
+                <th>City Name</th>
+                <th>State </th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% cities.forEach((entry, index) => { %>
+                <tr>
+                  <td><%= entry.id %></td>
+                  <td><%= entry.name %></td>
+                  <td><%= entry.state %></td>
+                    <td>
+                        <form action="/admin/cityManagement/delete/<%= entry.id %>" method="POST" style="display:inline;">
+                            <button class="button button-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+          </table>
+    </section>
+    <section class="page-card table-card">
+        <h2 class="page-title">Add city</h2>
+        <form action="/admin/cityManagement/add" method="POST">
+            <div class="form-group">
+                <label for="city-name">City Name:</label>
+                <input type="text" id="city-name" name="cityName" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+            <button class="button" type="submit">Add City</button>
+        </form>
     </section>
   </main>
 
