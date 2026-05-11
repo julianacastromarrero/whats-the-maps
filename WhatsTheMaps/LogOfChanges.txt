@@ -66,3 +66,9 @@
 - Created the files for question, city, and user management
 - Started working on user management
 - Changed the profile page so it looks like admin dashboard for users with an admin role.
+
+5/11 (5PM) - Juliana
+- Created the city management table
+- Added a form to add a city by name and started 
+- Changed the name of tallest_structure to  tallest_structure_height and tallest_structure_name in the DB to make it easier to display
+- Made sure all fact types displayed with first letter uppercase and no '_'

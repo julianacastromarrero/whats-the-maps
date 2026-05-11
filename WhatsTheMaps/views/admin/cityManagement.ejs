@@ -11,7 +11,7 @@
   <%- include('../partials/adminNav.ejs') %>
 
   <main class="page-shell page-shell--centered">
-    <div class="section-stack">
+    <div class="section-stack" style="width: 125%; max-width: 125%;">
       <%# First table with user players %>
       <section class="page-card table-card" style="width: 100%; overflow-x: auto;">
         <h1 class="page-title">Cities</h1>
@@ -23,7 +23,7 @@
                 <th>City Name</th>
                 <th>State </th>
                 <% factTypes.forEach(ft => { %>
-                    <th><%= ft.name %></th>
+                    <th><%= ft.name.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) %></th>
                 <% }) %>
                 <th>Actions</th>
               </tr>

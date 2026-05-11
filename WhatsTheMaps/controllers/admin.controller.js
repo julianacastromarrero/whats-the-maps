@@ -72,7 +72,7 @@ async function getCityManagement(req, res) {
     const allCities = await runQuery('SELECT id, name, state FROM cities ORDER BY id');
     const citiesWithFacts = await runQuery(`
       SELECT cf.city_id, ft.name as fact_type_name,
-             COALESCE(cf.value_text, CAST(cf.value_number AS CHAR), CAST(cf.value_boolean AS CHAR)) as fact_value
+             COALESCE(cf.value_text, CAST(CAST(cf.value_number AS UNSIGNED) AS CHAR), CAST(cf.value_boolean AS CHAR)) as fact_value
       FROM city_facts cf 
       JOIN fact_types ft ON cf.fact_type_id = ft.id 
       ORDER BY cf.city_id, ft.id
