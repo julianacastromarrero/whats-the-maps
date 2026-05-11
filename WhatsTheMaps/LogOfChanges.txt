@@ -57,6 +57,9 @@
 - Added direct sign up button in home page
 - Added 5 Florida cities and 5 California cities
 
+5/11 - Natalie
+- implemented a feature where a user must enter a password twice to sign up
+
 5/11 - Juliana
 - Added an admin user (slight change in db - added a role in the user table)
 - Created nav bar for admin
