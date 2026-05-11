@@ -9,8 +9,8 @@
   <%# Shared site chrome appears on every page %>
   <%- include('./partials/banner.ejs') %>
 
-  <%- include('./partials/nav.ejs') %>
   <% if (user.role === 'player') { %>
+  <%- include('./partials/nav.ejs') %>
   <main class="page-shell page-shell--centered">
     <section class="page-stack page-stack--wide">
       <%# Flash messages confirm profile updates or explain failures %>
@@ -187,15 +187,23 @@
   </main>
   <% } else if (user.role === 'admin') { %>
     <%# Admin role see a simple message and logout option %>
+    <%- include('./partials/adminNav.ejs') %>
     <main class="page-shell page-shell--centered">
+      <div class="top-bar">
+        <div class="left-section"><br></div>
+        <div>
+         <a class="button-link" href="/users/logout">
+            <span class="button">Log Out</span>
+          </a>
+      </div>
+      </div>
       <section class="page-card page-card--compact">
         <h1 class="page-title">Admin Dashboard</h1>
-        <p>Welcome, Admin! Here you will find options to manage the application.</p>
-        <a class="button-link" href="/users/logout">
-          <span class="button">Log Out</span>
-        </a>
+        <p>Welcome, Admin! </p>
+        <p>Here you will find options to manage the application.</p>
+
         <br>
-        <a class="button-link" onclick="location.href='/admin/userManagement'"></a>
+        <a class="button-link" onclick="location.href='/admin/userManagement'">
           <span class="button" style="font-size: 25px; background-color: #d87c71;">User Management</span>
         </a>
         <br>

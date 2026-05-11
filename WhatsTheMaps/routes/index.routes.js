@@ -3,6 +3,7 @@ const express = require('express');
 const pageController = require('../controllers/page.controller');
 const dashboardController = require('../controllers/dashboard.controller');
 const gameController = require('../controllers/game.controller');
+const adminController = require('../controllers/admin.controller');
 const authMiddleware = require('../middleware/auth.middleware');
 const scoreRepository = require('../repositories/score.repository');
 
@@ -58,6 +59,13 @@ function createInjectedSubmitQuizHandler({ calculateQuizResult, runQuery }) {
   };
 }
 
+function requireAdmin(req, res, next) {
+  if (!req.session.user || req.session.user.role !== 'admin') {
+    return res.status(403).send('Access denied. Admin privileges required.');
+  }
+  next();
+}
+
 module.exports = function createIndexRouter(deps = {}) {
   const router = express.Router();
   const {
@@ -84,6 +92,10 @@ module.exports = function createIndexRouter(deps = {}) {
   } else {
     router.post('/cities/:cityId/game/submit', gameController.submitQuiz);
   }
+
+  router.get('/admin/userManagement', requireAdmin, adminController.getUserManagement);
+  router.get('/admin/questionManagement', requireAdmin, adminController.getQuestionManagement);
+  router.get('/admin/cityManagement', requireAdmin, adminController.getCityManagement);
 
   return router;
 };

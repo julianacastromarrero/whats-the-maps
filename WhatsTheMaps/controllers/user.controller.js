@@ -35,7 +35,11 @@ async function login(req, res) {
       return res.redirect('/dashboard?scoreSaved=1');
     }
 
-    return res.redirect('/');
+    if (req.session.user.role === 'admin') {
+      return res.redirect('/dashboard');
+    } else {
+      return res.redirect('/');
+    }
   } catch (error) {
     console.error(error);
     return res.status(401).render(

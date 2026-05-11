@@ -6,9 +6,9 @@
 </head>
 <body>
   <%# Shared site chrome appears on every page %>
-  <%- include('./partials/banner.ejs') %>
+  <%- include('../partials/banner.ejs') %>
 
-  <%- include('./partials/adminNav.ejs') %>
+  <%- include('../partials/adminNav.ejs') %>
 
   <main class="page-shell page-shell--centered">
     <div class="section-stack">
@@ -24,6 +24,7 @@
                 <th>Email</th>
                 <th>Bio</th>
                 <th>Deleted?</th>
+                <th>Actions</th>
 
               </tr>
             </thead>
@@ -35,6 +36,16 @@
                   <td><%= entry.email %></td>
                   <td><%= entry.bio %></td>
                   <td><%= entry.deleted ? 'Yes' : 'No' %></td>
+                    <td>
+                        <% if (!entry.deleted) { %>
+                        <form action="/admin/userManagement/delete/<%= entry.user_id %>" method="POST" style="display:inline;">
+                            <button class="button button-danger" type="submit">Delete</button>
+                        </form>
+                        <% } else { %>
+                        <form action="/admin/userManagement/undelete/<%= entry.user_id %>" method="POST" style="display:inline;">
+                            <button class="button button-secondary" type="submit">Undelete</button>
+                        </form>
+                        <% } %>
                 </tr>
               <% }) %>
             </tbody>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Question Management</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <%# Shared site chrome appears on every page %>
+  <%- include('../partials/banner.ejs') %>
+
+  <%- include('../partials/adminNav.ejs') %>
+
+  <main class="page-shell page-shell--centered">
+    <section class="page-card">
+      <section class="page-card table-card">
+        <h1 class="page-title">Questions</h1>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Question ID</th>
+                <th>Question Text</th>
+                <th>City</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% questions.forEach((entry) => { %>
+                <tr>
+                  <td><%= entry.id %></td>
+                  <td><%= entry.question_text %></td>
+                  <td><%= entry.city_name %></td>
+                    <td>
+                        <form action="/admin/questionManagement/delete/<%= entry.id %>" method="POST" style="display:inline;">
+                            <button class="button button-danger" type="submit">Delete</button>
+                            <button class="button button-secondary" type="submit" formaction="/admin/questionManagement/edit/<%= entry.id %>">Edit</button>
+                        </form>
+                    </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+
+</body>
+</html>

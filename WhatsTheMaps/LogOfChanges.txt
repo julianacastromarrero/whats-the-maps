@@ -56,3 +56,10 @@
 - Changed footer to nav (more accurate)
 - Added direct sign up button in home page
 - Added 5 Florida cities and 5 California cities
+
+5/11 - Juliana
+- Added an admin user (slight change in db - added a role in the user table)
+- Created nav bar for admin
+- Created the files for question, city, and user management
+- Started working on user management
+- Changed the profile page so it looks like admin dashboard for users with an admin role.
