@@ -68,8 +68,32 @@ async function deleteQuestion(req, res) {
 
 async function getCityManagement(req, res) {
   try {
-    const cities = await runQuery('SELECT id, name, state FROM cities ORDER BY name');
-    return res.render('admin/cityManagement', { cities });
+    const factTypes = await runQuery('SELECT id, name FROM fact_types ORDER BY id');
+    const allCities = await runQuery('SELECT id, name, state FROM cities ORDER BY id');
+    const citiesWithFacts = await runQuery(`
+      SELECT cf.city_id, ft.name as fact_type_name,
+             COALESCE(cf.value_text, CAST(CAST(cf.value_number AS UNSIGNED) AS CHAR), CAST(cf.value_boolean AS CHAR)) as fact_value
+      FROM city_facts cf 
+      JOIN fact_types ft ON cf.fact_type_id = ft.id 
+      ORDER BY cf.city_id, ft.id
+    `);
+
+    // Create a map of city_id -> facts
+    const factsMap = {};
+    citiesWithFacts.forEach(row => {
+      if (!factsMap[row.city_id]) {
+        factsMap[row.city_id] = {};
+      }
+      factsMap[row.city_id][row.fact_type_name] = row.fact_value;
+    });
+
+    // Build cities array with facts
+    const cities = allCities.map(city => ({
+      ...city,
+      facts: factsMap[city.id] || {}
+    }));
+    
+    return res.render('admin/cityManagement', { cities, factTypes });
   } catch (error) {
     console.error(error);
     return res.status(500).send('Error loading city management.');
@@ -96,4 +120,4 @@ async function addCity(req, res) {
   }
 }
 
-module.exports = { getUserManagement, getQuestionManagement, getCityManagement };
+module.exports = { getUserManagement, getQuestionManagement, getCityManagement, deleteCity, addCity, deleteUser, undeleteUser };

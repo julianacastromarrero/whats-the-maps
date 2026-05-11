@@ -43,7 +43,7 @@ CREATE TABLE `fact_types` (
 
 LOCK TABLES `fact_types` WRITE;
 /*!40000 ALTER TABLE `fact_types` DISABLE KEYS */;
-INSERT INTO `fact_types` VALUES (1,'founding_year','year','number'),(2,'elevation','meters','number'),(3,'population','people','number'),(4,'tallest_structure','meters','number'),(5,'tallest_structure',NULL,'text'),(6,'nearest_border',NULL,'text'),(7,'nickname',NULL,'text');
+INSERT INTO `fact_types` VALUES (1,'founding_year','year','number'),(2,'elevation','meters','number'),(3,'population','people','number'),(4,'tallest_structure_height','meters','number'),(5,'tallest_structure_name',NULL,'text'),(6,'nearest_border',NULL,'text'),(7,'nickname',NULL,'text');
 /*!40000 ALTER TABLE `fact_types` ENABLE KEYS */;
 UNLOCK TABLES;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;

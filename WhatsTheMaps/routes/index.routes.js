@@ -94,8 +94,14 @@ module.exports = function createIndexRouter(deps = {}) {
   }
 
   router.get('/admin/userManagement', requireAdmin, adminController.getUserManagement);
+  router.post('/admin/userManagement/delete/:userId', requireAdmin, adminController.deleteUser);
+  router.post('/admin/userManagement/undelete/:userId', requireAdmin, adminController.undeleteUser);
   router.get('/admin/questionManagement', requireAdmin, adminController.getQuestionManagement);
   router.get('/admin/cityManagement', requireAdmin, adminController.getCityManagement);
+  router.post('/admin/cityManagement/delete/:cityId', requireAdmin, adminController.deleteCity);
+  router.post('/admin/cityManagement/add', requireAdmin, adminController.addCity);
+  router.post('/admin/cityManagement/delete/:cityId', requireAdmin, adminController.deleteCity);
+  router.post('/admin/cityManagement/add', requireAdmin, adminController.addCity);
 
   return router;
 };
