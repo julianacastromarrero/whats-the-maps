@@ -53,7 +53,6 @@ async function getQuestionManagement(req, res) {
     return res.status(500).send('Error loading question management.');
   }
 }
-
 async function deleteQuestion(req, res) {
   try {
     const factTypeId = req.params.id;
@@ -63,6 +62,17 @@ async function deleteQuestion(req, res) {
   catch (error) {
     console.error(error);
     return res.status(500).send('Error deleting question.');
+  }
+}
+async function addQuestion(req, res) {
+  try {
+    const { name, unit, data_type } = req.body;
+    await runQuery('INSERT INTO fact_types (name, unit, data_type) VALUES (?, ?, ?)', [name, unit, data_type]);
+    return res.redirect('admin/questionManagement');
+  }
+  catch (error) {
+    console.error(error);
+    return res.status(500).send('Error adding question type.');
   }
 }
 
@@ -120,4 +130,6 @@ async function addCity(req, res) {
   }
 }
 
-module.exports = { getUserManagement, getQuestionManagement, getCityManagement, deleteCity, addCity, deleteUser, undeleteUser };
+module.exports = { getUserManagement, deleteUser, undeleteUser,
+                    getQuestionManagement, deleteQuestion, addQuestion, 
+                    getCityManagement, deleteCity, addCity};
