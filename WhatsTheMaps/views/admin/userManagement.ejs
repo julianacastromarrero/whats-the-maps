@@ -23,6 +23,7 @@
                 <th>Username</th>
                 <th>Email</th>
                 <th>Bio</th>
+                <th>Creation Date</th>
                 <th>Deleted?</th>
                 <th>Actions</th>
 
@@ -35,6 +36,7 @@
                   <td><%= entry.username %></td>
                   <td><%= entry.email %></td>
                   <td><%= entry.bio || '-' %></td>
+                  <td><%= entry.created_at ? new Date(entry.created_at).toLocaleDateString() : '-' %></td>
                   <td><%= entry.deleted ? 'Yes' : 'No' %></td>
                   <td>
                     <% if (!entry.deleted) { %>
@@ -62,6 +64,7 @@
                 <th>User ID</th>
                 <th>Username</th>
                 <th>Email</th>
+                <th>Creation Date</th>
               </tr>
             </thead>
             <tbody>
@@ -70,6 +73,7 @@
                   <td><%= entry.user_id %></td>
                   <td><%= entry.username %></td>
                   <td><%= entry.email %></td>
+                  <td><%= entry.created_at ? new Date(entry.created_at).toLocaleDateString() : '-' %></td>
                 </tr>
               <% }) %>
             </tbody>

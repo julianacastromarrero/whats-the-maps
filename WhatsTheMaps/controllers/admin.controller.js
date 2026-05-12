@@ -3,7 +3,7 @@ const runQuery = require('../lib/runQuery');
 
 async function getUserManagement(req, res) {
   try {
-    const users = await runQuery('SELECT id, username, email, role, is_deleted FROM users ORDER BY id');
+    const users = await runQuery('SELECT id, username, email, role, created_at, bio, is_deleted FROM users ORDER BY id');
 
     const usersWithProfiles = users.map(user => {
       const storedProfile = getStoredProfile(user.id) || {};
@@ -12,6 +12,7 @@ async function getUserManagement(req, res) {
         username: user.username,
         email: user.email,
         role: user.role,
+        created_at: user.created_at,
         bio: storedProfile.bio || '',
         deleted: user.is_deleted
       };
