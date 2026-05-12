@@ -72,3 +72,9 @@
 - Added a form to add a city by name and started 
 - Changed the name of tallest_structure to  tallest_structure_height and tallest_structure_name in the DB to make it easier to display
 - Made sure all fact types displayed with first letter uppercase and no '_'
+
+5/11 (8PM) - Juliana
+- Added a form to add question types
+- Improved the city form to now include insertion to the city_facts as well
+- Changed header and normal body fonts
+- Added another table in userManagement to view the user id, username, and email of all the admins
