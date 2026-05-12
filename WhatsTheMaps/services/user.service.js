@@ -24,8 +24,23 @@ async function signup(username, email, password, verifPassword) {
   }
 
   const hashedPassword = await hashPassword(password);
+  const existingUserByEmail = await userRepository.getUserByEmail(email);
+  if (existingUserByEmail) {
+    const error = new Error('Email already exists');
+    error.code = 'ER_DUP_ENTRY';
+    throw error;
+  }
 
-  return userRepository.createUser(username, email, hashedPassword);
+  const existingUserByUsername = await userRepository.getUserByUsername(username);
+  if (existingUserByUsername) {
+    const error = new Error('Username already exists');
+    error.code = 'ER_DUP_ENTRY';
+    throw error;
+  }
+
+  await userRepository.createUser(username, email, hashedPassword);
+  const newUser = await userRepository.getUserByEmail(email);
+  return newUser;
 }
 
 async function login(email, password) {

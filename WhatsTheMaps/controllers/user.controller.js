@@ -7,8 +7,9 @@ async function signup(req, res) {
   const { username, email, password, verifPassword } = req.body;
 
   try {
-    await userService.signup(username, email, password, verifPassword);
-    return res.redirect('/login');
+    const newUser = await userService.signup(username, email, password, verifPassword);
+    req.session.user = buildSessionUser(newUser, {});
+    return res.redirect('/');
   } catch (error) {
     console.error(error);
 

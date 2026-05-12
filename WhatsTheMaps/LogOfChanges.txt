@@ -78,3 +78,5 @@
 - Improved the city form to now include insertion to the city_facts as well
 - Changed header and normal body fonts
 - Added another table in userManagement to view the user id, username, and email of all the admins
+- Fixed password retype (it was not hiding the second one)
+- Changed the signup so it gets rerouted directly to home instead of requiring log in
