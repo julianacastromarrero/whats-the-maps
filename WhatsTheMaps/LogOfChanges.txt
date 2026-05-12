@@ -87,3 +87,6 @@
 - Minor Modifications to CSS file
 - Fixed Error where not logged in users couldn't see other user profiles
 - Added a button where admins can promote other users to admin
+
+5/12 - Juliana
+- Small visual fix in profiles from not logged in guests
