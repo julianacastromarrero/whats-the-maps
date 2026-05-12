@@ -9,6 +9,8 @@
   <%# Shared site chrome appears on every page %>
   <%- include('./partials/banner.ejs') %>
   <% if (!user) { %>
+  <%- include('./partials/nav.ejs') %>
+  <main class="page-shell page-shell--centered">
     <section class="page-card section-stack dashboard-summary-card">
       <div class="dashboard-header">
         <div class="profile-pic profile-pic--large profile-picture-display">
@@ -51,6 +53,7 @@
         </div>
       </div>
     </section>
+    <br>
     <section class="page-card section-stack">
       <h2 class="page-title"><%= isReadOnlyProfile ? 'Player Stats' : 'Your Stats' %></h2>
       <div class="dashboard-copy">
@@ -64,7 +67,7 @@
         </p>
       </div>
     </section>
-
+  </main>
   <% }else if (user.role === 'player') { %>
   <%- include('./partials/nav.ejs') %>
   <main class="page-shell page-shell--centered">
