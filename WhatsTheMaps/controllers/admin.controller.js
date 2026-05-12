@@ -3,7 +3,7 @@ const runQuery = require('../lib/runQuery');
 
 async function getUserManagement(req, res) {
   try {
-    const users = await runQuery('SELECT id, username, email, is_deleted FROM users WHERE role = "player" ORDER BY id');
+    const users = await runQuery('SELECT id, username, email, role, is_deleted FROM users ORDER BY id');
 
     const usersWithProfiles = users.map(user => {
       const storedProfile = getStoredProfile(user.id) || {};
@@ -11,12 +11,16 @@ async function getUserManagement(req, res) {
         user_id: user.id,
         username: user.username,
         email: user.email,
+        role: user.role,
         bio: storedProfile.bio || '',
         deleted: user.is_deleted
       };
     });
 
-    return res.render('admin/userManagement', { users: usersWithProfiles });
+    const players = usersWithProfiles.filter(user => user.role === 'player');
+    const admins = usersWithProfiles.filter(user => user.role === 'admin');
+
+    return res.render('admin/userManagement', { players, admins });
   } catch (error) {
     console.error(error);
     return res.status(500).send('Error loading user management.');
@@ -119,12 +123,47 @@ async function deleteCity(req, res) {
 }
 async function addCity(req, res) {
   const { name, state } = req.body;
-    try {
-        await runQuery('INSERT INTO cities (name, state) VALUES (?, ?)', [name, state]);
-        res.redirect('/admin/cityManagement');
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error adding city.');
+
+  try {
+    const result = await runQuery('INSERT INTO cities (name, state) VALUES (?, ?)', [name, state]);
+    const cityId = result.insertId;
+
+    const factTypes = await runQuery('SELECT id, data_type FROM fact_types');
+    const inserts = [];
+
+    for (const factType of factTypes) {
+      const fieldName = `fact_${factType.id}`;
+      const rawValue = req.body[fieldName];
+      if (rawValue == null || rawValue === '') {
+        continue;
+      }
+      let valueText = null;
+      let valueNumber = null;
+      let valueBoolean = null;
+      if (factType.data_type === 'number') {
+        const parsed = Number(rawValue);
+        if (!Number.isNaN(parsed)) {
+          valueNumber = parsed;
+        }
+      } else if (factType.data_type === 'boolean') {
+        valueBoolean = rawValue === 'true' || rawValue === '1' || rawValue === 'on';
+      } else {
+        valueText = String(rawValue);
+      }
+
+      inserts.push(
+        runQuery(
+          'INSERT INTO city_facts (city_id, fact_type_id, value_text, value_number, value_boolean) VALUES (?, ?, ?, ?, ?)',
+          [cityId, factType.id, valueText, valueNumber, valueBoolean]
+        )
+      );
+    }
+
+    await Promise.all(inserts);
+    return res.redirect('/admin/cityManagement');
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send('Error adding city.');
   }
 }
 

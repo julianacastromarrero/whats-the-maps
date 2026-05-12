@@ -11,7 +11,7 @@
   <%- include('../partials/adminNav.ejs') %>
 
   <main class="page-shell page-shell--centered">
-    <div class="section-stack" style="width: 125%; max-width: 125%;">
+    <div class="section-stack" style="width: 115%; max-width: 115%;">
       <%# First table with user players %>
       <section class="page-card table-card" style="width: 100%; overflow-x: auto;">
         <h1 class="page-title">Cities</h1>
@@ -58,6 +58,12 @@
                 <label class="form-label" for="state">State:</label>
                 <input class="form-input" type="text" id="state" name="state" placeholder="State" required>
             </div>
+            <% factTypes.forEach(ft => { %>
+                <div class="form-group">
+                    <label class="form-label" for="fact_<%= ft.id %>"><%= ft.name.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) %>:</label>
+                    <input class="form-input" type="text" id="fact_<%= ft.id %>" name="fact_<%= ft.id %>" placeholder="<%= ft.unit || '' %>">
+                </div>
+            <% }) %>
             <button class="button button-primary" type="submit">Add City</button>
         </form>
     </section>

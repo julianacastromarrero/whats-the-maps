@@ -12,9 +12,9 @@
 
   <main class="page-shell page-shell--centered">
     <div class="section-stack">
-      <%# First table with user players %>
+      <%# Second table with user admin %>
       <section class="page-card table-card">
-        <h1 class="page-title">Users</h1>
+        <h1 class="page-title">Players</h1>
 
           <table class="data-table">
             <thead>
@@ -29,23 +29,47 @@
               </tr>
             </thead>
             <tbody>
-              <% users.forEach((entry, index) => { %>
+              <% players.forEach((entry, index) => { %>
                 <tr>
                   <td><%= entry.user_id %></td>
                   <td><%= entry.username %></td>
                   <td><%= entry.email %></td>
-                  <td><%= entry.bio %></td>
+                  <td><%= entry.bio || '-' %></td>
                   <td><%= entry.deleted ? 'Yes' : 'No' %></td>
-                    <td>
-                        <% if (!entry.deleted) { %>
-                        <form action="/admin/userManagement/delete/<%= entry.user_id %>" method="POST" style="display:inline;">
-                            <button class="button button-danger" type="submit">Delete</button>
-                        </form>
-                        <% } else { %>
-                        <form action="/admin/userManagement/undelete/<%= entry.user_id %>" method="POST" style="display:inline;">
-                            <button class="button button-secondary" type="submit">Undelete</button>
-                        </form>
-                        <% } %>
+                  <td>
+                    <% if (!entry.deleted) { %>
+                    <form action="/admin/userManagement/delete/<%= entry.user_id %>" method="POST" style="display:inline;">
+                        <button class="button button-danger" type="submit">Delete</button>
+                    </form>
+                    <% } else { %>
+                    <form action="/admin/userManagement/undelete/<%= entry.user_id %>" method="POST" style="display:inline;">
+                        <button class="button button-secondary" type="submit">Undelete</button>
+                    </form>
+                    <% } %>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+      </section>
+      <%# Second table with user admins %>
+      <section class="page-card table-card">
+        <h1 class="page-title">Admins</h1>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% admins.forEach((entry, index) => { %>
+                <tr>
+                  <td><%= entry.user_id %></td>
+                  <td><%= entry.username %></td>
+                  <td><%= entry.email %></td>
                 </tr>
               <% }) %>
             </tbody>
