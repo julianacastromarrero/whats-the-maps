@@ -56,6 +56,69 @@ INSERT INTO `cities` VALUES ('11','Orlando','Florida'),
                             ('18','San Diego','California'),
                             ('19','Sacramento','California'),
                             ('20','San Jose','California');
+INSERT INTO `cities` VALUES ('21','Salt Lake City','Utah'),
+                            ('22','Montgomery','Alabama'),
+                            ('23','Phoenix','Arizona'),
+                            ('24','Anchorage','Alaska'),
+                            ('25','Denver','Colorado'),
+                            ('26','Bridgeport','Connecticut'),
+                            ('27','Wilmington','Delaware'),
+                            ('28','Atlanta','Georgia'),
+                            ('29','Honolulu','Hawaii'),
+                            ('30','Boise','Idaho');
+INSERT INTO `cities` VALUES ('31','Chicago','Illinois'),
+                            ('32','Indianopolis','Indiana'),
+                            ('33','Des Moines','Iowa'),
+                            ('34','Wichita','Kansas'),
+                            ('35','Louisville','Kentucky'),
+                            ('36','New Orleans','Louisiana'),
+                            ('37','Portland','Maine'),
+                            ('38','Baltimore','Maryland'),
+                            ('39','Boston','Massachusetts'),
+                            ('40','Detroit','Michigan');
+INSERT INTO `cities` VALUES ('41','Minneapolis','Minnesota'),
+                            ('42','Jackson','Mississippi'),
+                            ('43','Kansas City','Missouri'),
+                            ('44','Billings','Montana'),
+                            ('45','Omaha','Nebraska'),
+                            ('46','Las Vegas','Nevada'),
+                            ('47','Manchester','New Hampshire'),
+                            ('48','Newark','New Jersey'),
+                            ('49','Albuquerque','New Mexico'),
+                            ('50','New York City','New York');
+INSERT INTO `cities` VALUES ('51','Charlotte','North Carolina'),
+                            ('52','Fargo','North Dakota'),
+                            ('53','Columbus','Ohio'),
+                            ('54','Oklahoma City','Oklahoma'),
+                            ('55','Eugene','Oregon'),
+                            ('56','Philadelphia','Pennsylvania'),
+                            ('57','Providence','Rhode Island'),
+                            ('58','Columbia','South Carolina'),
+                            ('59','Sioux Falls','South Dakota'),
+                            ('60','Nashville','Tennessee');
+INSERT INTO `cities` VALUES ('61','Burlington','Vermont'),
+                            ('62','Virginia Beach','Virginia'),
+                            ('63','Seattle','Washington'),
+                            ('64','Charleston','West Virginia'),
+                            ('65','Milwaukee','Wisconsin'),
+                            ('66','Cheyenne','Wyoming')
+                            ('67','Memphis','Tennessee'),
+                            ('68','Tucson','Arizona'),
+                            ('69','Mesa','Arizona'),
+                            ('70','Raleigh','North Carolina');
+INSERT INTO `cities` VALUES ('71','Colorado Springs','Colorado'),
+                            ('72','Tulsa','Oklahoma'),
+                            ('73','Aurora','Colorado'),
+                            ('74','Cleveland','Ohio'),
+                            ('75','Henderson','Nevada'),
+                            ('76','Lexington','Kentucky'),
+                            ('77','Cincinnati','Ohio'),
+                            ('78','Saint Paul','Minnesota'),
+                            ('79','Tacoma','Washington'),
+                            ('80','Lincoln','Nebraska');
+
+
+
 UNLOCK TABLES;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
