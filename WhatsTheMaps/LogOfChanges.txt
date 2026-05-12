@@ -81,3 +81,8 @@
 - Fixed password retype (it was not hiding the second one)
 - Changed the signup so it gets rerouted directly to home instead of requiring log in
 - Added creation date to the userManagement tables
+
+5/12 - Al 
+- Added 60 cities to database, as well as completed facts about cities.
+- Minor Modifications to CSS file
+- Fixed Error where not logged in users couldn't see other user profiles.

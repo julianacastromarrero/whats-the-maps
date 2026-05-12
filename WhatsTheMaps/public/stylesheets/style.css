@@ -43,7 +43,7 @@ a {
 
 h1 {
   font-family: "Handjet", monospace;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .page-shell {
@@ -74,7 +74,7 @@ h1 {
 .page-title {
   margin: 0;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.3rem;
   letter-spacing: 0.04em;
 }
 
@@ -123,7 +123,7 @@ h1 {
   margin: 0;
   color: #fff8ee;
   font-family: "Handjet", monospace;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.1rem, 4vw, 3.1rem);
   letter-spacing: 0.08em;
   font-weight: 600;
   text-shadow: 1px 1px 0 rgba(47, 36, 27, 0.25);
@@ -171,8 +171,8 @@ h1 {
 
 .profile-picture-display {
   color: var(--color-text-muted);
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 550;
+  font-size: 0.8rem;
   line-height: 1.4;
 }
 
@@ -189,14 +189,14 @@ h1 {
   border-radius: 999px;
   background-color: rgba(47, 36, 27, 0.8);
   color: #fff8ee;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.65rem;
+  font-weight: 550;
   transform: translateX(-50%);
   white-space: nowrap;
 }
 
 .username {
-  font-weight: 600;
+  font-weight: 550;
   text-decoration: none;
 }
 
@@ -217,8 +217,8 @@ h1 {
   border-radius: 999px;
   background-color: var(--color-surface-strong);
   color: var(--color-text);
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 550;
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
@@ -273,8 +273,8 @@ h1 {
 .hero-blob h1 {
   margin: 0;
   font-family: "Handjet", monospace;
-  font-weight: 400;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
@@ -337,7 +337,7 @@ h1 {
 }
 
 .form-label {
-  font-weight: 600;
+  font-weight: 550;
 }
 
 .form-input {
@@ -549,7 +549,7 @@ h1 {
   padding: 12px 16px;
   border-radius: 14px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 550;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
@@ -638,7 +638,7 @@ h1 {
 }
 
 .city-state {
-  font-weight: 600;
+  font-weight: 550;
 }
 
 .city-item p {
@@ -674,7 +674,7 @@ h1 {
 
 .city-hover-title {
   margin-bottom: 8px;
-  font-weight: 600;
+  font-weight: 550;
   color: var(--color-text);
 }
 
@@ -694,7 +694,7 @@ h1 {
   background: none;
   color: var(--color-text);
   font: inherit;
-  font-weight: 600;
+  font-weight: 550;
   cursor: pointer;
 }
 
@@ -739,7 +739,7 @@ h1 {
   overflow-x: auto;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   line-height: 1.45;
 }
 
@@ -812,7 +812,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  font-weight: 600;
+  font-weight: 550;
 }
 
 .timer-track {
@@ -857,7 +857,7 @@ h1 {
   background-color: var(--color-surface);
   color: var(--color-text);
   font: inherit;
-  font-weight: 600;
+  font-weight: 550;
   cursor: pointer;
   transition: transform 0.15s ease, background-color 0.15s ease;
 }
@@ -888,8 +888,8 @@ h1 {
 
 .result-summary-card p {
   margin-top: 10px;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 550;
 }
 
 .result-list {

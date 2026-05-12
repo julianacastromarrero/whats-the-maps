@@ -8,8 +8,64 @@
 <body>
   <%# Shared site chrome appears on every page %>
   <%- include('./partials/banner.ejs') %>
+  <% if (!user) { %>
+    <section class="page-card section-stack dashboard-summary-card">
+      <div class="dashboard-header">
+        <div class="profile-pic profile-pic--large profile-picture-display">
+          <% if (profile.profileImageUrl) { %>
+            <img
+              class="profile-pic__image"
+              src="<%= profile.profileImageUrl %>"
+              alt="<%= profile.username %>'s profile picture"
+            >
+          <% } else { %>
+            Profile Picture
+          <% } %>
+        </div>
 
-  <% if (user.role === 'player') { %>
+        <div class="user-description">
+          <h1><%= isReadOnlyProfile ? `${profile.username}'s Profile` : profile.username %></h1>
+          <p>
+            <%= profile.bio || (isReadOnlyProfile ? 'No bio added yet.' : 'Add your bio and choose a profile picture in edit mode.') %>
+          </p>
+        </div>
+
+        <div class="dashboard-actions">
+          <% if (isReadOnlyProfile) { %>
+            <a class="button-link" href="/leaderboard">
+              <span class="button">Back to Leaderboard</span>
+            </a>
+            <% if (user) { %>
+              <a class="button-link" href="/dashboard">
+                <span class="button button-primary">My Dashboard</span>
+              </a>
+            <% } %>
+          <% } else { %>
+            <a class="button-link" href="/dashboard?edit=1">
+              <span class="button button-primary">Edit Profile</span>
+            </a>
+            <a class="button-link" href="/users/logout">
+              <span class="button">Log Out</span>
+            </a>
+          <% } %>
+        </div>
+      </div>
+    </section>
+    <section class="page-card section-stack">
+      <h2 class="page-title"><%= isReadOnlyProfile ? 'Player Stats' : 'Your Stats' %></h2>
+      <div class="dashboard-copy">
+        <p>Quizzes Played: <%= stats.quizzesPlayed %></p>
+        <p>Total Points Earned: <%= stats.totalPoints %></p>
+        <p>Best Score: <%= stats.bestScore %></p>
+        <p>Average Score: <%= stats.averageScore %></p>
+        <p>
+          Highest Leaderboard Rank:
+          <%= stats.highestLeaderboardRank ? `#${stats.highestLeaderboardRank}` : 'Not ranked yet' %>
+        </p>
+      </div>
+    </section>
+
+  <% }else if (user.role === 'player') { %>
   <%- include('./partials/nav.ejs') %>
   <main class="page-shell page-shell--centered">
     <section class="page-stack page-stack--wide">
@@ -220,5 +276,6 @@
     <%# Avatar upload previews only run on editable dashboard %>
     <script src="/javascript/dashboard.js"></script>
   <% } %>
+
 </body>
 </html>
