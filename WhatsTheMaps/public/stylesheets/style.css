@@ -171,7 +171,7 @@ h1 {
 
 .profile-picture-display {
   color: var(--color-text-muted);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.9rem;
   line-height: 1.4;
 }
@@ -190,13 +190,13 @@ h1 {
   background-color: rgba(47, 36, 27, 0.8);
   color: #fff8ee;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   transform: translateX(-50%);
   white-space: nowrap;
 }
 
 .username {
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -218,7 +218,7 @@ h1 {
   background-color: var(--color-surface-strong);
   color: var(--color-text);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
@@ -337,7 +337,7 @@ h1 {
 }
 
 .form-label {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .form-input {
@@ -549,7 +549,7 @@ h1 {
   padding: 12px 16px;
   border-radius: 14px;
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
@@ -638,7 +638,7 @@ h1 {
 }
 
 .city-state {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .city-item p {
@@ -674,7 +674,7 @@ h1 {
 
 .city-hover-title {
   margin-bottom: 8px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-text);
 }
 
@@ -694,7 +694,7 @@ h1 {
   background: none;
   color: var(--color-text);
   font: inherit;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -812,7 +812,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .timer-track {
@@ -857,7 +857,7 @@ h1 {
   background-color: var(--color-surface);
   color: var(--color-text);
   font: inherit;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   transition: transform 0.15s ease, background-color 0.15s ease;
 }
@@ -889,7 +889,7 @@ h1 {
 .result-summary-card p {
   margin-top: 10px;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .result-list {
