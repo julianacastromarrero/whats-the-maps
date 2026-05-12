@@ -88,7 +88,6 @@ async function getCityManagement(req, res) {
       ORDER BY cf.city_id, ft.id
     `);
 
-    // Create a map of city_id -> facts
     const factsMap = {};
     citiesWithFacts.forEach(row => {
       if (!factsMap[row.city_id]) {
@@ -97,7 +96,6 @@ async function getCityManagement(req, res) {
       factsMap[row.city_id][row.fact_type_name] = row.fact_value;
     });
 
-    // Build cities array with facts
     const cities = allCities.map(city => ({
       ...city,
       facts: factsMap[city.id] || {}
@@ -130,6 +128,4 @@ async function addCity(req, res) {
   }
 }
 
-module.exports = { getUserManagement, deleteUser, undeleteUser,
-                    getQuestionManagement, deleteQuestion, addQuestion, 
-                    getCityManagement, deleteCity, addCity};
+module.exports = { getUserManagement, deleteUser, undeleteUser, getQuestionManagement, deleteQuestion, addQuestion, getCityManagement, deleteCity, addCity};
