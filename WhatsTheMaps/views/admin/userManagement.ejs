@@ -43,6 +43,9 @@
                     <form action="/admin/userManagement/delete/<%= entry.user_id %>" method="POST" style="display:inline;">
                         <button class="button button-danger" type="submit">Delete</button>
                     </form>
+                    <form action="/admin/userManagement/makeAdmin/<%= entry.user_id %>" method="POST" style="display:inline;">
+                      <button class="button button-secondary" type="submit">Make Admin</button>
+                  </form>
                     <% } else { %>
                     <form action="/admin/userManagement/undelete/<%= entry.user_id %>" method="POST" style="display:inline;">
                         <button class="button button-secondary" type="submit">Undelete</button>

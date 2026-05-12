@@ -37,6 +37,16 @@ async function deleteUser(req, res) {
         res.status(500).send('Error deleting user.');
     }
 }
+async function makeAdmin(req, res) {
+  const userId = req.params.userId;
+    try {
+        await runQuery('UPDATE users SET role = ? WHERE id = ?', ['admin', userId]);
+        res.redirect('/admin/userManagement');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error making Admin.');
+    }
+}
 
 async function undeleteUser(req, res) {
   const userId = req.params.userId;
@@ -168,4 +178,4 @@ async function addCity(req, res) {
   }
 }
 
-module.exports = { getUserManagement, deleteUser, undeleteUser, getQuestionManagement, deleteQuestion, addQuestion, getCityManagement, deleteCity, addCity};
+module.exports = { getUserManagement, deleteUser, undeleteUser, getQuestionManagement, deleteQuestion, addQuestion, getCityManagement, deleteCity, addCity, makeAdmin};

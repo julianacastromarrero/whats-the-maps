@@ -95,6 +95,7 @@ module.exports = function createIndexRouter(deps = {}) {
 
   router.get('/admin/userManagement', requireAdmin, adminController.getUserManagement);
   router.post('/admin/userManagement/delete/:userId', requireAdmin, adminController.deleteUser);
+  router.post('/admin/userManagement/makeAdmin/:userId', requireAdmin, adminController.makeAdmin);
   router.post('/admin/userManagement/undelete/:userId', requireAdmin, adminController.undeleteUser);
   router.get('/admin/questionManagement', requireAdmin, adminController.getQuestionManagement);
   router.get('/admin/cityManagement', requireAdmin, adminController.getCityManagement);

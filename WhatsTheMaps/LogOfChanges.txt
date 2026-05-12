@@ -85,4 +85,5 @@
 5/12 - Al 
 - Added 60 cities to database, as well as completed facts about cities.
 - Minor Modifications to CSS file
-- Fixed Error where not logged in users couldn't see other user profiles.
+- Fixed Error where not logged in users couldn't see other user profiles
+- Added a button where admins can promote other users to admin
